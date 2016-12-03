@@ -10,7 +10,9 @@ import Foundation
 import UIKit
 import BaseUtils
 
-class NetworkCore {
+open class NetworkCore {
+    
+    open static let instance = NetworkCore()
     
     private let defQueue: OperationQueue = {
         let queue = OperationQueue()
@@ -20,19 +22,18 @@ class NetworkCore {
     }()
     private static let TIMEOUT_SECS: TimeInterval = 15
     
-    static let instance = NetworkCore()
     
-    enum Errors: Error {
+    public enum Errors: Error {
         case InvalidUrl
     }
     
-    enum ConnectionStatus {
+    public enum ConnectionStatus {
         case connected
         case offline
         case checking
     }
     
-    func sendAsync(request: BaseHttpRequest,
+    open func sendAsync(request: BaseHttpRequest,
                    queue: OperationQueue?,
                    callback: @escaping (_ response: BaseHttpResponse)->Void) {
         ThreadUtils.checkedExecuteOnBackgroundThread() {
@@ -47,7 +48,7 @@ class NetworkCore {
             }
         }
     }
-    func sendSync(request: BaseHttpRequest,
+    open func sendSync(request: BaseHttpRequest,
                   queue: OperationQueue?,
                   callback: (_ response: BaseHttpResponse)->Void) {
         
@@ -107,7 +108,7 @@ class NetworkCore {
     }
     
     
-    func asyncRequest(request: URLRequest,
+    open func asyncRequest(request: URLRequest,
                       queue: OperationQueue,
                       showSpinner: Bool,
                       callback: @escaping (_ response: BaseHttpResponse) -> Void) {
@@ -140,7 +141,7 @@ class NetworkCore {
         task.resume()
     }
     
-    func syncRequest(request: URLRequest,
+    open func syncRequest(request: URLRequest,
                      showSpinner: Bool) -> BaseHttpResponse {
         
         var urlResponse: URLResponse?

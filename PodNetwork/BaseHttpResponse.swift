@@ -8,19 +8,19 @@
 
 import Foundation
 
-class BaseHttpResponse {
+open class BaseHttpResponse {
     
-    static let CLIENT_ERROR = -100
-    static let CONNECTIVITY_ERROR = -110
-    static let INCORRECT_RESPONSE_ERROR = -120
-    static let SERVER_ERROR = -130
+    open static let CLIENT_ERROR = -100
+    open static let CONNECTIVITY_ERROR = -110
+    open static let INCORRECT_RESPONSE_ERROR = -120
+    open static let SERVER_ERROR = -130
     
     
-    init (statusCode: Int) {
+    public init (statusCode: Int) {
         self.statusCode = statusCode
     }
     
-    init (response: HTTPURLResponse, data: Data?, error: Error?) {
+    public init (response: HTTPURLResponse, data: Data?, error: Error?) {
         self.statusCode = response.statusCode
         self.headers = response.allHeaderFields as? [String: AnyObject]
         
@@ -33,43 +33,43 @@ class BaseHttpResponse {
         description = error?.localizedDescription
     }
     
-    let statusCode: Int!
-    var headers: [String: AnyObject]?
-    var body: [String: AnyObject]?
-    var description: String?
+    open let statusCode: Int!
+    open var headers: [String: AnyObject]?
+    open var body: [String: AnyObject]?
+    open var description: String?
     
-    func isSuccess() -> Bool {
+    open func isSuccess() -> Bool {
         return (statusCode / 100 == 2)
     }
-    func isConnectivityError() -> Bool {
+    open func isConnectivityError() -> Bool {
         return (statusCode == BaseHttpResponse.CONNECTIVITY_ERROR)
     }
-    func isUnauthorized() -> Bool {
+    open func isUnauthorized() -> Bool {
         return (statusCode == 403 || statusCode == 401)
     }
-    func isServerError() -> Bool {
+    open func isServerError() -> Bool {
         return (statusCode / 100 == 5 || statusCode == 404)
     }
     
     
-    static func buildClientError(msg: String?) -> BaseHttpResponse {
+    open static func buildClientError(msg: String?) -> BaseHttpResponse {
         let resp = BaseHttpResponse(statusCode: CLIENT_ERROR)
         resp.description = msg
         return resp
     }
-    static func buildConnectivityError(msg: String?) -> BaseHttpResponse {
+    open static func buildConnectivityError(msg: String?) -> BaseHttpResponse {
         let resp = BaseHttpResponse(statusCode: CONNECTIVITY_ERROR)
         resp.description = msg
         return resp
     }
-    static func buildServerError(msg: String?) -> BaseHttpResponse {
+    open static func buildServerError(msg: String?) -> BaseHttpResponse {
         let resp = BaseHttpResponse(statusCode: SERVER_ERROR)
         resp.description = msg
         return resp
     }
     
     // Mock Building
-    func with(body: [String: AnyObject]?) -> BaseHttpResponse {
+    open func with(body: [String: AnyObject]?) -> BaseHttpResponse {
         self.body = body
         return self
     }

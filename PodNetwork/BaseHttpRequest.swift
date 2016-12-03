@@ -8,25 +8,25 @@
 
 import Foundation
 
-class BaseHttpRequest: NSObject {
+open class BaseHttpRequest: NSObject {
     
-    func showNetworkActivity() -> Bool {
+    open func showNetworkActivity() -> Bool {
         return false
     }
     
-    func getUrl() -> String {
+    open func getUrl() -> String {
         return ""
     }
     
-    func getHTTPMethod() -> String {
+    open func getHTTPMethod() -> String {
         return "GET"
     }
     
-    func getHeaders() -> [String: AnyObject]? {
+    open func getHeaders() -> [String: AnyObject]? {
         return nil
     }
     
-    func getData() -> Data? {
+    open func getData() -> Data? {
         return nil
     }
     
