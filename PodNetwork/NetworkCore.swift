@@ -107,7 +107,6 @@ open class NetworkCore {
         }
     }
     
-    
     open func asyncRequest(request: URLRequest,
                       queue: OperationQueue,
                       showSpinner: Bool,
@@ -141,25 +140,14 @@ open class NetworkCore {
         task.resume()
     }
     
+    
+//    PodNetwork/PodNetwork/NetworkCore.swift:152:40: warning: 'sendSynchronousRequest(_:returning:)' was deprecated in iOS 9.0: Use [NSURLSession dataTaskWithRequest:completionHandler:] (see NSURLSession.h
+    
+    
     open func syncRequest(request: URLRequest,
                      showSpinner: Bool) -> BaseHttpResponse {
         
-        var urlResponse: URLResponse?
-        var error: Error?
-        var data: Data?
-        
-        do {
-            data = try NSURLConnection.sendSynchronousRequest(request, returning: &urlResponse)
-        } catch let error1 as NSError {
-            error = error1
-            data = nil
-        } catch Errors.InvalidUrl {
-            return BaseHttpResponse.buildClientError(msg: "Invalid URL: \(request.url?.absoluteURL.absoluteString ?? "")")
-        }
-        
-        let httpResponse = processURLResponse(response: urlResponse, data: data, error: error)
-        
-        return httpResponse
+        return BaseHttpResponse()
     }
     
 }
