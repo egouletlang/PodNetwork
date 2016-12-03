@@ -147,7 +147,7 @@ open class NetworkCore {
     open func syncRequest(request: URLRequest,
                      showSpinner: Bool) -> BaseHttpResponse {
         
-        return BaseHttpResponse()
+        return BaseHttpResponse(statusCode: BaseHttpResponse.CLIENT_ERROR)
     }
     
 }
