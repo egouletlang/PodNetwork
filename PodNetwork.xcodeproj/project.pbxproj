@@ -36,7 +36,7 @@
 		6BF945E61DF2AF0200658E13 /* PodNetworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PodNetworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF945EB1DF2AF0200658E13 /* PodNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodNetworkTests.swift; sourceTree = "<group>"; };
 		6BF945ED1DF2AF0200658E13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6BF945F71DF2AF9B00658E13 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		6BF945F71DF2AF9B00658E13 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6BF945FB1DF2B16900658E13 /* BaseHttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHttpRequest.swift; sourceTree = "<group>"; };
 		6BF945FC1DF2B16900658E13 /* BaseHttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHttpResponse.swift; sourceTree = "<group>"; };
 		6BF945FD1DF2B16900658E13 /* NetworkCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCore.swift; sourceTree = "<group>"; };
