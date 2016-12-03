@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
 
   s.name         = "PodNetwork"
-  s.version      = "1.0.5"
+  s.version      = "1.0.6"
   s.summary      = "PodNetwork classes"
   s.description  = <<-DESC
   A bunch of classes i have found useful for PodNetwork
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.source_files  = "PodNetwork", "PodNetwork/**/*.{h,m}", "PodNetwork/**/*.{swift}"
   s.exclude_files = "Classes/Exclude"
 
-  s.dependency 'BaseUtils', '~> 1.0.3'
+  s.dependency 'BaseUtils'
 
 end
 
