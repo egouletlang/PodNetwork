@@ -36,7 +36,7 @@ open class NetworkCore {
     open func sendAsync(request: BaseHttpRequest,
                    queue: OperationQueue?,
                    callback: @escaping (_ response: BaseHttpResponse)->Void) {
-        ThreadUtils.checkedExecuteOnBackgroundThread() {
+        ThreadHelper.checkedExecuteOnBackgroundThread() {
             
             do {
                 let urlReq = try self.buildURLRequest(request: request)
