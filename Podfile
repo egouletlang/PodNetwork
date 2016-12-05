@@ -8,7 +8,8 @@ target 'PodNetwork' do
   use_frameworks!
 
   # Pods for PodNetwork
-    pod 'BaseUtils'
+  #pod 'BaseUtils', :path => '~/Code/Pods/BaseUtils/'
+  pod 'BaseUtils'
 
   target 'PodNetworkTests' do
     inherit! :search_paths
