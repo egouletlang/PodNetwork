@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B41DB9FB01659E596B2CA2A /* Pods_PodNetworkTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E042324722FE7B41B1617607 /* Pods_PodNetworkTests.framework */; };
-		6B346F111E01230200759C5B /* upnpx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B346F101E01230200759C5B /* upnpx.framework */; };
 		6B346F141E01237A00759C5B /* UPnPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B346F131E01237A00759C5B /* UPnPHelper.swift */; };
 		6BCB29361DF2B52800AC3A7E /* BaseHttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB29331DF2B52800AC3A7E /* BaseHttpRequest.swift */; };
 		6BCB29371DF2B52800AC3A7E /* BaseHttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB29341DF2B52800AC3A7E /* BaseHttpResponse.swift */; };
@@ -34,6 +33,7 @@
 		6136701740728C6F76C10560 /* Pods-PodNetworkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodNetworkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PodNetworkTests/Pods-PodNetworkTests.release.xcconfig"; sourceTree = "<group>"; };
 		6B346F101E01230200759C5B /* upnpx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = upnpx.framework; sourceTree = "<group>"; };
 		6B346F131E01237A00759C5B /* UPnPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPnPHelper.swift; sourceTree = "<group>"; };
+		6B346F151E01269600759C5B /* libupnpx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libupnpx.a; path = "../../../Library/Developer/Xcode/DerivedData/upnpxdemo-cwbbgjkvlvzbarchssbcrvrhohes/Build/Products/Debug-iphonesimulator/libupnpx.a"; sourceTree = "<group>"; };
 		6BCB29331DF2B52800AC3A7E /* BaseHttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHttpRequest.swift; sourceTree = "<group>"; };
 		6BCB29341DF2B52800AC3A7E /* BaseHttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHttpResponse.swift; sourceTree = "<group>"; };
 		6BCB29351DF2B52800AC3A7E /* NetworkCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCore.swift; sourceTree = "<group>"; };
@@ -56,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B346F111E01230200759C5B /* upnpx.framework in Frameworks */,
 				89687A93715804AC35AF4C5E /* Pods_PodNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -76,6 +75,7 @@
 		135C21E138D42A7240E1D062 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6B346F151E01269600759C5B /* libupnpx.a */,
 				6B346F101E01230200759C5B /* upnpx.framework */,
 				ED07FA82FA4776EE169EF04A /* Pods_PodNetwork.framework */,
 				E042324722FE7B41B1617607 /* Pods_PodNetworkTests.framework */,
@@ -92,6 +92,13 @@
 				6136701740728C6F76C10560 /* Pods-PodNetworkTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6B346F191E01280800759C5B /* UPNP */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UPNP;
 			sourceTree = "<group>";
 		};
 		6BF945D31DF2AF0200658E13 = {
@@ -118,6 +125,7 @@
 		6BF945DF1DF2AF0200658E13 /* PodNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				6B346F191E01280800759C5B /* UPNP */,
 				6BCB29331DF2B52800AC3A7E /* BaseHttpRequest.swift */,
 				6BCB29341DF2B52800AC3A7E /* BaseHttpResponse.swift */,
 				6BCB29351DF2B52800AC3A7E /* NetworkCore.swift */,
@@ -466,6 +474,7 @@
 			baseConfigurationReference = D3DDAF10A85F7EC0DD7A96E6 /* Pods-PodNetwork.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3D978X2G8M;
@@ -496,6 +505,7 @@
 			baseConfigurationReference = C257449F5B478E930C3E0109 /* Pods-PodNetwork.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 3D978X2G8M;
