@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <upnpx/upnpx.h>
 
 //! Project version number for PodNetwork.
 FOUNDATION_EXPORT double PodNetworkVersionNumber;

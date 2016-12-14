@@ -11,7 +11,7 @@ import Foundation
 class UPnPHelper {
     
     func a() {
-        UPnPManager.getInstance().clearAllDevices()
+        
     }
     
 }

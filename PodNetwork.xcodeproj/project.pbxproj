@@ -31,9 +31,7 @@
 
 /* Begin PBXFileReference section */
 		6136701740728C6F76C10560 /* Pods-PodNetworkTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PodNetworkTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PodNetworkTests/Pods-PodNetworkTests.release.xcconfig"; sourceTree = "<group>"; };
-		6B346F101E01230200759C5B /* upnpx.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = upnpx.framework; sourceTree = "<group>"; };
 		6B346F131E01237A00759C5B /* UPnPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPnPHelper.swift; sourceTree = "<group>"; };
-		6B346F151E01269600759C5B /* libupnpx.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libupnpx.a; path = "../../../Library/Developer/Xcode/DerivedData/upnpxdemo-cwbbgjkvlvzbarchssbcrvrhohes/Build/Products/Debug-iphonesimulator/libupnpx.a"; sourceTree = "<group>"; };
 		6BCB29331DF2B52800AC3A7E /* BaseHttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHttpRequest.swift; sourceTree = "<group>"; };
 		6BCB29341DF2B52800AC3A7E /* BaseHttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHttpResponse.swift; sourceTree = "<group>"; };
 		6BCB29351DF2B52800AC3A7E /* NetworkCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkCore.swift; sourceTree = "<group>"; };
@@ -75,8 +73,6 @@
 		135C21E138D42A7240E1D062 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6B346F151E01269600759C5B /* libupnpx.a */,
-				6B346F101E01230200759C5B /* upnpx.framework */,
 				ED07FA82FA4776EE169EF04A /* Pods_PodNetwork.framework */,
 				E042324722FE7B41B1617607 /* Pods_PodNetworkTests.framework */,
 			);
