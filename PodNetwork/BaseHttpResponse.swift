@@ -24,10 +24,15 @@ open class BaseHttpResponse {
         self.statusCode = response.statusCode
         self.headers = response.allHeaderFields as? [String: AnyObject]
         
+        let dataSize = (Double (data?.count ?? 0))/1024.0/1024.0
+        print ("data size - \(data==nil) \(dataSize)")
+        
         if let d = data {
             do {
-                self.body = try JSONSerialization.jsonObject(with: d as Data, options: JSONSerialization.ReadingOptions.allowFragments) as? [String : AnyObject]
-            } catch {}
+                self.body = try JSONSerialization.jsonObject(with: d as Data, options: JSONSerialization.ReadingOptions.allowFragments)
+            } catch let error {
+                print(error.localizedDescription)
+            }
         }
         
         description = error?.localizedDescription
@@ -35,7 +40,7 @@ open class BaseHttpResponse {
     
     open let statusCode: Int!
     open var headers: [String: AnyObject]?
-    open var body: [String: AnyObject]?
+    open var body: Any?
     open var description: String?
     
     open func isSuccess() -> Bool {
