@@ -15,29 +15,6 @@ open class BaseHttpResponse {
     open static let INCORRECT_RESPONSE_ERROR = -120
     open static let SERVER_ERROR = -130
     
-    private func parseJson(top: String) {
-        
-        print(top)
-        print(top.replacingOccurrences(of: "\\\"", with: "\""))
-        
-        var mod = top.replacingOccurrences(of: "\\\"", with: "\"")
-//        mod = String(mod.characters.dropFirst())
-//        mod = String(mod.characters.dropLast())
-        
-//        let parts = mod.characters.split{$0 == ";"}.map(String.init)
-//        
-//        var response = [String: AnyObject]()
-//        
-        do {
-            self.body = try JSONSerialization.jsonObject(with: mod.data(using: String.Encoding.utf8)!, options: JSONSerialization.ReadingOptions.allowFragments)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        
-        
-    }
-    
-    
     public init (statusCode: Int) {
         self.statusCode = statusCode
     }
