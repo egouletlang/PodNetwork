@@ -31,7 +31,7 @@ open class BaseHttpResponse {
                 self.body = try JSONSerialization.jsonObject(with: d as Data, options: JSONSerialization.ReadingOptions.allowFragments)
             } catch let error {
                 if let d = data {
-                    print(String(data: d, encoding: .utf8))
+                    print("\(String(data: d, encoding: .utf8))")
                 }
                 print(error.localizedDescription)
             }
