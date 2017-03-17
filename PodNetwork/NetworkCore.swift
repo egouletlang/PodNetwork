@@ -20,7 +20,7 @@ open class NetworkCore {
         queue.qualityOfService = QualityOfService.background
         return queue
     }()
-    private static let TIMEOUT_SECS: TimeInterval = 15
+    open static let TIMEOUT_SECS: TimeInterval = 15
     
     
     public enum Errors: Error {
@@ -40,7 +40,6 @@ open class NetworkCore {
             
             do {
                 let urlReq = try self.buildURLRequest(request: request)
-                urlReq.timeoutInterval = NetworkCore.TIMEOUT_SECS
                 self.asyncRequest(request: urlReq as URLRequest, queue: queue ?? self.defQueue, showSpinner: request.showNetworkActivity(), callback: callback)
             } catch {
                 callback(BaseHttpResponse.buildClientError(msg: "Error Building the HTTP Request."))
@@ -58,12 +57,14 @@ open class NetworkCore {
         return try buildURLRequest(urlString: request.getUrl(),
                                    requestMethod: request.getHTTPMethod(),
                                    requestBody: request.getData(),
-                                   headers: request.getHeaders())
+                                   headers: request.getHeaders(),
+                                   timeout: request.getTimeout() )
     }
     private func buildURLRequest(urlString: String,
                                  requestMethod: String,
                                  requestBody: Data?,
-                                 headers: [String: AnyObject]?) throws -> NSMutableURLRequest {
+                                 headers: [String: AnyObject]?,
+                                 timeout: TimeInterval) throws -> NSMutableURLRequest {
         
         guard let url = URL(string: urlString) else {
             throw Errors.InvalidUrl
@@ -72,10 +73,11 @@ open class NetworkCore {
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = requestMethod
         request.httpBody = requestBody as Data?
+        request.timeoutInterval = timeout
         
         if let headers = headers {
             for (key, value) in headers {
-                
+                print("\(key): \(value)")
                 // If header value is simple string, just set it as-is
                 if let valueStr = value as? String {
                     request.setValue(valueStr, forHTTPHeaderField: key)
@@ -99,6 +101,7 @@ open class NetworkCore {
         } else {
             // If response is nil (or not expected type) we hopefully have an error that we can print.
             // Regardless, something bad happened and we have to bail
+            
             if let e = error {
                 return BaseHttpResponse.buildServerError(msg: e.localizedDescription)
             } else {
@@ -131,6 +134,7 @@ open class NetworkCore {
         let task = session.dataTask(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             let httpResponse = self.processURLResponse(response: response, data: data, error: error)
             
+            print("\(error?.localizedDescription)")
             print("task done")
             
             // Let the spinner continue

@@ -30,4 +30,8 @@ open class BaseHttpRequest: NSObject {
         return nil
     }
     
+    open func getTimeout() -> TimeInterval {
+        return NetworkCore.TIMEOUT_SECS
+    }
+    
 }

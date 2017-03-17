@@ -19,7 +19,7 @@ open class BaseApiRequest: BaseHttpRequest {
     }()
     
     override open func getHTTPMethod() -> String {
-        return self.getBody() != nil ? "POST" : super.getHTTPMethod()
+        return self.body != nil ? "POST" : super.getHTTPMethod()
     }
     
     // MARK: - URL -
@@ -28,7 +28,7 @@ open class BaseApiRequest: BaseHttpRequest {
             getApiVersion() +
             getApiEndpoint() +
             (buildUrlEncodedParams() ?? "")
-        print(url)
+        print("\(getHTTPMethod())     \(url)")
         return url
     }
     open func buildUrlEncodedParams() -> String? {
@@ -53,18 +53,17 @@ open class BaseApiRequest: BaseHttpRequest {
     override open func getHeaders() -> [String : AnyObject]? {
         var headers: [String: String] = getCustomHeaders()
         
-        if self.getBody() != nil {
+        if self.body != nil {
             headers["Content-Type"] = "application/json"
         } else if self.getData() != nil {
             headers["Content-Type"] = "multipart/form-data"
-            //            headers["Content-Type"] = "application/octet-stream"
         }
         
         return headers as [String : AnyObject]?
         
     }
     override open func getData() -> Data? {
-        if let b = getBody() , b.count > 0 {
+        if let b = self.body , b.count > 0 {
             do {
                 return try JSONSerialization.data(withJSONObject: b, options: JSONSerialization.WritingOptions.prettyPrinted)
             } catch {
@@ -98,6 +97,10 @@ open class BaseApiRequest: BaseHttpRequest {
     open func getUrlParams() -> [String: AnyObject]? {
         return nil
     }
+    
+    open lazy var body: [String: AnyObject]? = {
+       return self.getBody()
+    }()
     open func getBody() -> [String: AnyObject]? {
         return nil
     }
