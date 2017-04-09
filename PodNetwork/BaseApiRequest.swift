@@ -64,6 +64,7 @@ open class BaseApiRequest: BaseHttpRequest {
     }
     override open func getData() -> Data? {
         if let b = self.body , b.count > 0 {
+
             do {
                 return try JSONSerialization.data(withJSONObject: b, options: JSONSerialization.WritingOptions.prettyPrinted)
             } catch {

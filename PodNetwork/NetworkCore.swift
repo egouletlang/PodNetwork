@@ -134,7 +134,7 @@ open class NetworkCore {
         let task = session.dataTask(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
             let httpResponse = self.processURLResponse(response: response, data: data, error: error)
             
-            print("\(error?.localizedDescription)")
+            print("\(String(describing: error?.localizedDescription))")
             print("task done")
             
             // Let the spinner continue
