@@ -20,7 +20,7 @@ open class NetworkCore {
         queue.qualityOfService = QualityOfService.background
         return queue
     }()
-    open static let TIMEOUT_SECS: TimeInterval = 15
+    open static let TIMEOUT_SECS: TimeInterval = 30
     
     
     public enum Errors: Error {
@@ -101,8 +101,9 @@ open class NetworkCore {
         } else {
             // If response is nil (or not expected type) we hopefully have an error that we can print.
             // Regardless, something bad happened and we have to bail
-            
-            if let e = error {
+            if let e = error, e.localizedDescription == "The request timed out." {
+                return BaseHttpResponse.buildConnectivityError(msg: nil)
+            } else if let e = error {
                 return BaseHttpResponse.buildServerError(msg: e.localizedDescription)
             } else {
                 return BaseHttpResponse.buildConnectivityError(msg: nil)
